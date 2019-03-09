@@ -18,7 +18,7 @@ function verfiyToken(req, res, next) {
   if (token === "null") {
     return res.status(401).send("Unauthorized Request");
   }
-  jwt.verify(token, "s3cr3t", function(err, decoded) {
+  jwt.verify(token, "secret", function(err, decoded) {
     if (err) return res.status(401).send("Unauthorized Request");
 
     req.accountId = decode.accountId;
