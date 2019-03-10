@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 
-
+const todos = require('./routes/todos');
 const users = require('./routes/users');
 
 app.set('port', (process.env.PORT || 3000));
@@ -12,6 +12,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => res.send('Hello World!'));
+app.use('/todos', todos);
 app.use('/users', users);
 
 app.listen(app.get('port'), () => console.log(`App listening on port ${app.get('port')}`));
